@@ -1,0 +1,109 @@
+{% extends 'resume/base.html' %}
+{% load static %}
+{% block title %}{% if new %}Create Resume{% else %}Edit Resume{% endif %} • ResuMate{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-10 mx-auto">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h3 class="mb-4">{% if new %}Create Resume{% else %}Edit Resume{% endif %}</h3>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-md-6">{{ form.title.label_tag }} {{ form.title }}</div>
+            <div class="col-md-6">{{ form.full_name.label_tag }} {{ form.full_name }}</div>
+            <div class="col-md-6">{{ form.email.label_tag }} {{ form.email }}</div>
+            <div class="col-md-6">{{ form.phone.label_tag }} {{ form.phone }}</div>
+            <div class="col-md-6">{{ form.location.label_tag }} {{ form.location }}</div>
+            <div class="col-12">{{ form.summary.label_tag }} {{ form.summary }}</div>
+            <div class="col-md-6">{{ form.photo.label_tag }} {{ form.photo }}</div>
+          </div>
+
+          <hr class="my-4">
+          <h5>Experience</h5>
+          {{ exp_fs.management_form }}
+          <div id="exp-container" class="row g-3">
+            {% for f in exp_fs %}
+              <div class="col-12 border rounded p-3 position-relative">
+                {{ f.id }}
+                <div class="row g-3">
+                  <div class="col-md-6">{{ f.job_title.label_tag }} {{ f.job_title }}</div>
+                  <div class="col-md-6">{{ f.company.label_tag }} {{ f.company }}</div>
+                  <div class="col-md-4">{{ f.location.label_tag }} {{ f.location }}</div>
+                  <div class="col-md-4">{{ f.start_date.label_tag }} {{ f.start_date }}</div>
+                  <div class="col-md-4">{{ f.end_date.label_tag }} {{ f.end_date }}</div>
+                  <div class="col-md-12">{{ f.is_current.label_tag }} {{ f.is_current }}</div>
+                  <div class="col-12">{{ f.description.label_tag }} {{ f.description }}</div>
+                  <div class="col-12">{{ f.DELETE }} <label>Delete</label></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <hr class="my-4">
+          <h5>Education</h5>
+          {{ edu_fs.management_form }}
+          <div class="row g-3">
+            {% for f in edu_fs %}
+              <div class="col-12 border rounded p-3">
+                {{ f.id }}
+                <div class="row g-3">
+                  <div class="col-md-6">{{ f.degree.label_tag }} {{ f.degree }}</div>
+                  <div class="col-md-6">{{ f.institution.label_tag }} {{ f.institution }}</div>
+                  <div class="col-md-6">{{ f.start_year.label_tag }} {{ f.start_year }}</div>
+                  <div class="col-md-6">{{ f.end_year.label_tag }} {{ f.end_year }}</div>
+                  <div class="col-12">{{ f.description.label_tag }} {{ f.description }}</div>
+                  <div class="col-12">{{ f.DELETE }} <label>Delete</label></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <hr class="my-4">
+          <h5>Skills</h5>
+          {{ skill_fs.management_form }}
+          <div class="row g-3">
+            {% for f in skill_fs %}
+              <div class="col-md-6">
+                {{ f.id }}
+                <div class="border rounded p-3 h-100">
+                  {{ f.name.label_tag }} {{ f.name }}
+                  {{ f.level.label_tag }} {{ f.level }}
+                  {{ f.category.label_tag }} {{ f.category }}
+                  <div>{{ f.DELETE }} <label>Delete</label></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <hr class="my-4">
+          <h5>Projects</h5>
+          {{ proj_fs.management_form }}
+          <div class="row g-3">
+            {% for f in proj_fs %}
+              <div class="col-12">
+                {{ f.id }}
+                <div class="border rounded p-3">
+                  <div class="row g-3">
+                    <div class="col-md-6">{{ f.name.label_tag }} {{ f.name }}</div>
+                    <div class="col-md-6">{{ f.role.label_tag }} {{ f.role }}</div>
+                    <div class="col-12">{{ f.description.label_tag }} {{ f.description }}</div>
+                    <div class="col-md-6">{{ f.link.label_tag }} {{ f.link }}</div>
+                    <div class="col-12">{{ f.DELETE }} <label>Delete</label></div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="d-grid mt-4">
+            <button class="btn btn-success btn-lg">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

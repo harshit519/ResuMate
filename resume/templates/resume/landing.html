@@ -1,0 +1,47 @@
+{% extends 'resume/base.html' %}
+{% block title %}ResuMate • Build Beautiful Resumes{% endblock %}
+{% block content %}
+<section class="py-5 text-center bg-light rounded-3">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Build Beautiful, Printable Resumes</h1>
+    <p class="lead">Create multiple versions, manage your experiences and skills, and export to a print-ready page.</p>
+    <div class="d-flex gap-2 justify-content-center">
+      <a href="{% url 'resume_create' %}" class="btn btn-primary btn-lg">Create Resume</a>
+      <a href="{% url 'resume_list' %}" class="btn btn-outline-primary btn-lg">Go to Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>Structured Forms</h5>
+            <p class="text-secondary">Collect personal info, experiences, education, skills and projects with ease.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>Multiple Versions</h5>
+            <p class="text-secondary">Create and manage multiple resume versions tailored to each job.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>Print / Download</h5>
+            <p class="text-secondary">Export your resume to a clean, print-friendly page that works in any browser.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
